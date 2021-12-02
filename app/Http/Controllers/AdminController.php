@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use App\Models\Laptop;
+use App\Models\Desktop;
+use App\Models\PT;
+use App\Models\Accessory;
 
 class AdminController extends Controller
 {
@@ -23,6 +28,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin');
+        $laptops = Laptop::all();
+        $desktops = Desktop::all();
+        $PT = PT::all();
+        $Accessories = Accessory::all();
+        return view('admin',['laptops'=>$laptops,'desktops' => $desktops,'PTs' => $PT,'Accessories' => $Accessories]);
     }
 }

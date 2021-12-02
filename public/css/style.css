@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu:ital@0;1&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body{
+    background-image: url('https://media.istockphoto.com/vectors/abstract-background-with-geometric-on-pastel-color-vector-template-vector-id1060096810?k=20&m=1060096810&s=170667a&w=0&h=QwMqpTXzZm8v0OwY89eIbavvcyShJujW449YMC8Jw3A=');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.container{
+    background: whitesmoke;
+    max-width: 80%;
+    margin: 100px auto;
+    box-shadow: 6px 3px 22px 3px rgba(0,0,0,0.75);
+
+}
+
+
+.container .navbar{
+    border-bottom: 2px solid rgb(131, 125, 125);
+    padding: 1rem 0;
+
+}
+
+.container .navbar .navbar-brand {
+    font-weight: 800;
+    font-size: 2rem;
+    color: #cf27a2;
+    text-shadow: 1px 1px 1px #919191,
+    1px 2px 1px #ffffffb0,
+    1px 3px 1px #ffffffb0,
+    1px 4px 1px #ffffffb0,
+    1px 5px 1px #ffffffb0,
+    1px 6px 1px #ffffffb0,
+
+    1px 10px 6px rgba(0, 0, 0, 0.116),
+    1px 12px 10px rgba(0, 0, 0, 0.116),
+    1px 15px 15px rgba(0, 0, 0, 0.116),
+    1px 20px 20px rgba(0, 0, 0, 0.116);
+
+}
+
+
+
+
+
+.container .navbar .img{
+    width: 3rem;
+    height: 3rem;
+
+}
+
+.container .navbar .navbar-nav .nav-item > a{
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #cf27a2;
+}
+
+.container .row .text > h1{
+    line-height: 4.5rem;
+    font-size: 4rem;
+    font-weight:bolder;
+    color:#cf27a2;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 1px #919191,
+    1px 2px 1px #ffffff,
+    1px 3px 1px #ffffff,
+    1px 4px 1px #ffffff,
+    1px 5px 1px #ffffff,
+    1px 6px 1px #ffffff,
+    1px 7px 1px #ffffff,
+    1px 8px 1px #ffffff,
+    1px 9px 1px #ffffff,
+    1px 10px 1px #ffffff,
+    1px 18px 6px rgba(0, 0, 0, 0.233),
+    1px 22px 10px rgba(0, 0, 0, 0.233),
+    1px 25px 35px rgba(0, 0, 0, 0.233),
+    1px 30px 60px rgba(0, 0, 0, 0.233);
+}
+
+.container .row .text {
+    margin: 4rem 0;
+    padding-left: 2rem;
+
+}
+
+.container .row .text > p{
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+.container .row .text > button{
+    padding: 1rem 1.5rem;
+}
+
+@media(max-width:1030px){
+    .container .row .text > h1{
+        font-size: 2.8rem;
+    }
+    .container .row .text > p{
+        font-size: 1.1rem;
+
+    }
+
+    .container .row .text > button{
+        padding: .6rem 1rem;
+        font-size: .8rem;
+        margin-top: .5rem;
+    }
+    .container .row .img > img{
+        width: 70%;
+        height: 70%;
+    }
+
+}
+
+.container .row .img > img{
+    width: 95%;
+    height: 95%;
+}
+
+.navbar-toggler{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    border: 3px solid rgb(146, 146, 146);
+    border-radius: 50%;
+    outline: none  !important;
+    position: relative;
+}
+
+
+
+
+.navbar-toggler .bars{
+    height: 2px;
+    width: 50px;
+    background-color: black;
+    position: relative;
+
+}
+
+.navbar-toggler .bars::before,
+.navbar-toggler .bars::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    right: 0;
+    transition:top .3s ease , bottom .3s ease;
+
+}
+
+.navbar-toggler .bars::before{
+    top: 8px;
+}
+
+.navbar-toggler .bars::after{
+    bottom: 8px;
+}
+
+.navbar-toggler.active .bars::before{
+    top:0;
+    bottom: 0;
+}
+
+.navbar-toggler.active .bars::after{
+    bottom:0;
+    top: 0;
+}
+
+@keyframes button_plus{
+    0% {
+        opacity: 1;
+        transform: scale(1);
+
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.4);
+
+    }
+}
+
+
+
+.navbar .container-fluid > .navbar-toggler::after {
+
+    content: '';
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 4px solid #cf27a2;
+    animation: button_plus 1s ease infinite;
+}
+
+
+@media(max-width:990px){
+
+    .navbar-toggler{
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+}
+
