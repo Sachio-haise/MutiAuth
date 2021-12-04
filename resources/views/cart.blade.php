@@ -87,29 +87,7 @@
 
 <script src="https://use.fontawesome.com/c560c025cf.js"></script>
 
-<script>
-    $(document).ready(function (){
 
-
-
-        var $product_price = $('.container .card .card-body .row .product-price h5 ul li ').val();
-        console.log($product_price);
-
-
-
-    });
-
-
-
-    function update_total(){
-        var $quantity =$('.container .card .card-body .row .quantity input').val() || 0;
-        var $product_price = $('.container .card .card-body .row .product-price h5 ul li ').val();
-        $('.container .card .card-footer .total input').val($quantity * $product_price);
-    }
-    setInterval(update_total,30);
-
-
-</script>
 <div class="container">
     <div class="card shopping-cart">
         <div class="card-header bg-dark text-light">
@@ -127,15 +105,13 @@
         <div class="card-body">
 
 
+
         @foreach($newproducts as $product)
-
-
-
 
 
             <!-- PRODUCT -->
 
-                <div class="row">
+                <div class="row wrap">
                     <div class="col-12 col-sm-12 col-md-2 text-center">
                         <img class="img-responsive" src="{{asset('img/'.$product->file)}}" alt="prewiew" width="120" height="80">
                     </div>
@@ -143,7 +119,7 @@
                         <h4 class="product-name"><strong>{{$product->brand}}</strong></h4>
                         <h5>
                             <ul>
-                                <li value="{{$product->price}}">$<span>{{$product->price}}</span></li>
+                                <li  value="{{$product->price}}">${{$product->price}}</li>
                             </ul>
                         </h5>
                     </div>
@@ -154,7 +130,7 @@
                         <div class="col-4 col-sm-4 col-md-4">
                             <div class="quantity">
 
-                                <input  type="number" step="1" max="99" min="1"  title="Qty" class="qty"
+                                <input value="1"  type="number" step="1" max="99" min="1"  title="Qty" class="qty"
                                        size="4">
 
                             </div>
@@ -162,12 +138,7 @@
 
 
 
-                        <div class="col-2 col-sm-2 col-md-2 text-right">
 
-                            <a href="{{route('delete-cart',[$product->id])}}" type="button" class="btn btn-outline-danger btn-xs" >
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                            </a>
-                        </div>
                     </div>
                 </div>
                 <hr>
@@ -180,22 +151,61 @@
         <div class="card-footer">
 
 
-            <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left">
 
-            </div>
+
+
             <div class="pull-right" style="margin: 10px">
 
-                <div class="total pull-right" style="margin: 5px">
                     Total price:<b>$</b>
-                    <input  type="number" step="1" max="99" min="1"  title="Qty" class="qty"
-                            size="4" value="" disabled>
-                </div>
+                    <input value="0" type="number" step="1" max="99" min="1"  title="Qty" class="qty"
+                            size="4"  disabled>
+
+
             </div>
+
         </div>
+
+
+
     </div>
 </div>
 
+<script>
+    update_total();
+    var quantity = document.getElementsByClassName('quantity');
+    for (var j = 0;j<quantity.length;j++){
+        var input = quantity[j].querySelector('input');
+        input.addEventListener('change',update);
+    }
 
+    function update(event){
+       var input = event.target;
+       if(isNaN(input.value) || input.value <= 0){
+           input.value = 1;
+       }
+       update_total();
+
+    }
+
+
+
+    function update_total(){
+        var rows = document.getElementsByClassName('wrap');
+        var Subtotal = document.querySelector('.card-footer input');
+        var total = 0;
+        for(var i =0;i<rows.length;i++){
+            var cartrow = rows[i];
+            var price = cartrow.querySelector('.container .card .card-body .row .product-price h5 ul li').innerText.replace('$','');
+            var quantity = cartrow.querySelector('.container .card .card-body .row .quantity input').value;
+
+            total += quantity * price;
+
+        }
+        Subtotal.value = total;
+    }
+
+
+</script>
 
 </body>
 </html>

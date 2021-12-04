@@ -19,6 +19,7 @@ use App\Http\Controllers\AccessoryController;
 
 Route::get('/', function () {
     return view('mywelcome');
+
 });
 
 Auth::routes();
@@ -28,7 +29,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/product/{id}/add-card',[\App\Http\Controllers\HomeController::class,'add'])->name('addToCard');
-Route::get('/product/{id}/delete',[\App\Http\Controllers\HomeController::class,'delete'])->name('delete-cart');
+
+Route::get('/product/show',[\App\Http\Controllers\HomeController::class,'show'])->name('show-cart');
 Route::get('product',[\App\Http\Controllers\HomeController::class,'show'])->name('showProduct');
 Route::prefix('admin')->group(function(){
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');

@@ -7,6 +7,7 @@ use App\Models\Laptop;
 use App\Models\Desktop;
 use App\Models\PT;
 use App\Models\Accessory;
+use Melihovv\ShoppingCart\Facades\ShoppingCart as Cart;
 
 class HomeController extends Controller
 {
@@ -34,9 +35,14 @@ class HomeController extends Controller
         return view('home',['laptops'=>$laptops,'desktops' => $desktops,'PTs' => $PT,'Accessories' => $Accessories]);
     }
 
-    public function add(Request $request,$id){
-        $items = array();
 
+
+
+
+
+   public function add(Request $request,$id){
+
+       $items = array();
         if($request->session()->has('items')){
             $items = $request->session()->get('items');
             if(!in_array($id,$items)){
@@ -56,6 +62,10 @@ class HomeController extends Controller
         return view('home',['laptops'=>$laptops,'desktops' => $desktops,'PTs' => $PT,'Accessories' => $Accessories]);
     }
 
+
+
+
+
     public function show(Request  $request){
         $carts = $request->session()->get('items');
 
@@ -70,17 +80,14 @@ class HomeController extends Controller
 
         }
 
-        $newproducts= array_filter($products, function($v){
+        $this->newproducts= array_filter($products, function($v){
             return !is_null($v) && $v !== '';
         });
 
 
-        return view('cart',compact('newproducts'));
-    }
-
-    public function delete($id){
+        return view('cart',['newproducts' => $this->newproducts]);
 
     }
 
 
-}
+    }

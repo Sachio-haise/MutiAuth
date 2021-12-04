@@ -13,7 +13,7 @@
 
 
 
-        @media(min-width:990px){ .navbar .navbar-nav{ margin-left: 47rem;} }
+        @media(min-width:990px){ .navbar .navbar-nav{ margin-left: 42rem;} }
 
     </style>
 
@@ -35,6 +35,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-sm-auto mb-2 mb-lg-0"  >
 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('show-cart')}}">{{ __('Cart')}}</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#product">{{ __('Product') }}</a>
                 </li>
